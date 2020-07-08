@@ -11,7 +11,7 @@ public class Dish extends AbstractNamedEntity {
     public Dish() {
     }
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "menu_id")
     private Menu menu;
 

@@ -16,8 +16,8 @@ public class Vote extends AbstractBaseEntity {
     private User user;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "menu_id")
-    private Menu menu;
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 
     @Column(name = "date_time", nullable = false)
     @NotNull
@@ -31,12 +31,12 @@ public class Vote extends AbstractBaseEntity {
         this.user = user;
     }
 
-    public Menu getMenu() {
-        return menu;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public Date getDate() {
