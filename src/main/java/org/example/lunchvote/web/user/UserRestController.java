@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-import static org.example.lunchvote.util.ValidationUtil.*;
+import static org.example.lunchvote.util.ValidationUtil.assureIdConsistent;
+import static org.example.lunchvote.util.ValidationUtil.checkNew;
+import static org.example.lunchvote.util.ValidationUtil.checkNotFoundWithId;
 
 @Controller
 @Slf4j

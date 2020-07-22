@@ -1,3 +1,5 @@
+package org.example.lunchvote;
+
 import org.example.lunchvote.model.Dish;
 import org.example.lunchvote.repository.DataJpaUserRepository;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

@@ -8,9 +8,6 @@ import java.util.Date;
 @Table(name = "votes")
 public class Vote extends AbstractBaseEntity {
 
-    public Vote() {
-    }
-
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
@@ -22,6 +19,9 @@ public class Vote extends AbstractBaseEntity {
     @Column(name = "date_time", nullable = false)
     @NotNull
     private Date date;
+
+    public Vote() {
+    }
 
     public User getUser() {
         return user;

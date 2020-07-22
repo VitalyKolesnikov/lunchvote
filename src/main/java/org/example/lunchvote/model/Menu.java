@@ -9,9 +9,6 @@ import java.util.List;
 @Table(name = "menus")
 public class Menu extends AbstractBaseEntity {
 
-    public Menu() {
-    }
-
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
@@ -22,6 +19,9 @@ public class Menu extends AbstractBaseEntity {
 
     @OneToMany(mappedBy = "menu")
     private List<Dish> dishes;
+
+    public Menu() {
+    }
 
     public Restaurant getRestaurant() {
         return restaurant;
