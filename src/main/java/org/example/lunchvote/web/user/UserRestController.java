@@ -9,7 +9,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -28,13 +30,14 @@ public class UserRestController {
     public ResponseEntity<List<User>> getAll() {
         log.info("getAll");
         List<User> users = repository.getAll();
-
         return users.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND) : new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    public User get(int id) {
+    @GetMapping("{id}")
+    public ResponseEntity<User> get(@PathVariable int id) {
         log.info("get {}", id);
-        return repository.get(id);
+        User user = repository.get(id);
+        return user == null ? new ResponseEntity<>(HttpStatus.NOT_FOUND) : new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     public User create(User user) {
@@ -44,9 +47,10 @@ public class UserRestController {
         return repository.save(user);
     }
 
-    public void delete(int id) {
+    @DeleteMapping("{id}")
+    public ResponseEntity<User> delete(@PathVariable int id) {
         log.info("delete {}", id);
-        repository.delete(id);
+        return repository.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     public void update(User user, int id) {
@@ -56,8 +60,4 @@ public class UserRestController {
         checkNotFoundWithId(repository.save(user), user.id());
     }
 
-    public User getByMail(String email) {
-        log.info("getByEmail {}", email);
-        return repository.getByEmail(email);
-    }
 }
