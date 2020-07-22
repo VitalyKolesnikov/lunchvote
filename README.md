@@ -1,8 +1,7 @@
 Lunchvote Graduation Project 
 ===============================
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/dc4fb02c1db649998ca9ca5f7d7f6b91)](https://app.codacy.com/manual/VitalyKolesnikov/topjava?utm_source=github.com&utm_medium=referral&utm_content=VitalyKolesnikov/topjava&utm_campaign=Badge_Grade_Dashboard)
-[![Build Status](https://travis-ci.org/VitalyKolesnikov/topjava.svg?branch=master)](https://travis-ci.org/VitalyKolesnikov/topjava)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/fee1d70912884e5da9f147a5424449d0)](https://www.codacy.com/manual/VitalyKolesnikov/lunchvote?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VitalyKolesnikov/lunchvote&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/VitalyKolesnikov/lunchvote.svg?branch=master)](https://travis-ci.org/VitalyKolesnikov/lunchvote)
 
 Design and implement a REST API using Hibernate/Spring/SpringMVC (or Spring-Boot) without frontend.
 
