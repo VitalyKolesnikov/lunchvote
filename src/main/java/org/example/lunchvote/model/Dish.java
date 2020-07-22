@@ -1,11 +1,17 @@
 package org.example.lunchvote.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "dishes")
+@Getter
+@Setter
+@ToString
 public class Dish extends AbstractNamedEntity {
 
     public Dish() {
@@ -18,20 +24,4 @@ public class Dish extends AbstractNamedEntity {
     @Column(name = "price", nullable = false)
     @NotNull
     private int price;
-
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
 }

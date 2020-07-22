@@ -1,5 +1,7 @@
 package org.example.lunchvote.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.Hibernate;
 import org.springframework.util.Assert;
 
@@ -7,6 +9,8 @@ import javax.persistence.*;
 
 @MappedSuperclass
 @Access(AccessType.FIELD)
+@Getter
+@Setter
 public abstract class AbstractBaseEntity {
     public static final int START_SEQ = 100000;
 
@@ -20,14 +24,6 @@ public abstract class AbstractBaseEntity {
 
     protected AbstractBaseEntity(Integer id) {
         this.id = id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     // doesn't work for hibernate lazy proxy
