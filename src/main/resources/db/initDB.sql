@@ -13,7 +13,8 @@ CREATE TABLE USERS
 (
     id    INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
     name  VARCHAR NOT NULL,
-    email VARCHAR NOT NULL
+    email VARCHAR NOT NULL,
+    password VARCHAR NOT NULL
 );
 CREATE UNIQUE INDEX USERS_UNIQUE_EMAIL_IDX
     ON USERS (email);

@@ -1,20 +1,17 @@
 package org.example.lunchvote;
 
-import org.example.lunchvote.model.Dish;
-import org.example.lunchvote.repository.DataJpaUserRepository;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.example.lunchvote.web.user.AdminRestController;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("spring/spring-app.xml", "spring/spring-db.xml");
+        try (GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext()) {
+            appCtx.getEnvironment().setActiveProfiles("postgres", "datajpa");
+            appCtx.load("spring/spring-app.xml", "spring/spring-db.xml");
+            appCtx.refresh();
 
-        Dish dish = new Dish();
-        dish.setId(15);
-        dish.setName("Burger");
-        dish.setPrice(150);
-
-        System.out.println(dish);
-
-        System.out.println(ctx.getBean(DataJpaUserRepository.class).getAll());
+            AdminRestController adminRestController = appCtx.getBean(AdminRestController.class);
+            System.out.println(adminRestController.get(123));
+        }
     }
 }

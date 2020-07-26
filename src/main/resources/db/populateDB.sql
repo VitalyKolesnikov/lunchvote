@@ -13,18 +13,18 @@ FROM RESTAURANTS;
 
 ALTER SEQUENCE GLOBAL_SEQ RESTART WITH 100000;
 
-INSERT INTO USERS (NAME, EMAIL)
-VALUES ('User1', 'user1@gmail.com'),
-       ('User2', 'user2@gmail.com'),
-       ('User3', 'user3@gmail.com'),
-       ('Admin', 'admin@gmail.com');
+INSERT INTO USERS (NAME, EMAIL, PASSWORD)
+VALUES ('User1', 'user1@gmail.com', 'pass1'),
+       ('User2', 'user2@gmail.com', 'pass2'),
+       ('User3', 'user3@gmail.com', 'pass3'),
+       ('Admin', 'admin@gmail.com', 'pass_admin');
 
 INSERT INTO USER_ROLES (ROLE, USER_ID)
 VALUES ('USER', 100000),
        ('USER', 100001),
        ('USER', 100002),
-       ('ADMIN', 100003),
-       ('USER', 100003);
+       ('USER', 100003),
+       ('ADMIN', 100003);
 
 INSERT INTO RESTAURANTS (NAME)
 VALUES ('KFC'),
