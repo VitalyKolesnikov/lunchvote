@@ -14,9 +14,6 @@ import javax.validation.constraints.NotNull;
 @ToString
 public class Dish extends AbstractNamedEntity {
 
-    public Dish() {
-    }
-
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "menu_id")
     private Menu menu;
@@ -24,4 +21,7 @@ public class Dish extends AbstractNamedEntity {
     @Column(name = "price", nullable = false)
     @NotNull
     private int price;
+
+    public Dish() {
+    }
 }
