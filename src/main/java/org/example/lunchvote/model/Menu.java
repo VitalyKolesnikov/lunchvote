@@ -9,7 +9,7 @@ import java.util.List;
 @Table(name = "menus")
 public class Menu extends AbstractBaseEntity {
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
@@ -17,11 +17,13 @@ public class Menu extends AbstractBaseEntity {
     @NotNull
     private LocalDate date;
 
-    @OneToMany(mappedBy = "menu")
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "menus_dishes",
+            joinColumns = {@JoinColumn(name = "menu_id")},
+            inverseJoinColumns = {@JoinColumn(name = "dish_id")}
+    )
     private List<Dish> dishes;
-
-    public Menu() {
-    }
 
     public Restaurant getRestaurant() {
         return restaurant;

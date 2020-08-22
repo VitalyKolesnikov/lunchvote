@@ -20,9 +20,6 @@ public class Vote extends AbstractBaseEntity {
     @NotNull
     private Date date;
 
-    public Vote() {
-    }
-
     public User getUser() {
         return user;
     }

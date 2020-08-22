@@ -7,7 +7,4 @@ import javax.persistence.Table;
 @Table(name = "restaurants")
 public class Restaurant extends AbstractNamedEntity {
 
-    public Restaurant() {
-    }
-
 }

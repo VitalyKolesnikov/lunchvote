@@ -1,24 +1,22 @@
 package org.example.lunchvote.web.user;
 
+import org.example.lunchvote.UserTestData;
+import org.example.lunchvote.model.User;
 import org.example.lunchvote.repository.UserRepository;
 import org.example.lunchvote.web.AbstractControllerTest;
+import org.example.lunchvote.web.json.JsonUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.example.lunchvote.UserTestData;
-import org.example.lunchvote.model.User;
-import org.example.lunchvote.util.exception.NotFoundException;
-import org.example.lunchvote.web.json.JsonUtil;
 
+import static org.example.lunchvote.TestUtil.readFromJson;
+import static org.example.lunchvote.UserTestData.*;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.example.lunchvote.TestUtil.readFromJson;
-import static org.example.lunchvote.UserTestData.*;
 
 class AdminRestControllerTest extends AbstractControllerTest {
 
@@ -84,6 +82,6 @@ class AdminRestControllerTest extends AbstractControllerTest {
         perform(MockMvcRequestBuilders.get(REST_URL))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(USER_MATCHER.contentJson(ADMIN, USER1, USER2, USER3));
+                .andExpect(USER_MATCHER.contentJson(USER1, USER2, USER3, ADMIN));
     }
 }

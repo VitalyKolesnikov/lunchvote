@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "dishes")
@@ -14,14 +15,10 @@ import javax.validation.constraints.NotNull;
 @ToString
 public class Dish extends AbstractNamedEntity {
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "menu_id")
-    private Menu menu;
+    @ManyToMany(mappedBy = "dishes")
+    private List<Menu> menus;
 
     @Column(name = "price", nullable = false)
     @NotNull
     private int price;
-
-    public Dish() {
-    }
 }
