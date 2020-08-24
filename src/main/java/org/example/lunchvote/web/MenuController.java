@@ -1,4 +1,4 @@
-package org.example.lunchvote.web.menu;
+package org.example.lunchvote.web;
 
 import org.example.lunchvote.model.Menu;
 import org.example.lunchvote.repository.MenuRepository;

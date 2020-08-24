@@ -1,5 +1,8 @@
 package org.example.lunchvote.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Hibernate;
@@ -11,6 +14,7 @@ import javax.persistence.*;
 @Access(AccessType.FIELD)
 @Getter
 @Setter
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public abstract class AbstractBaseEntity {
     public static final int START_SEQ = 100000;
 

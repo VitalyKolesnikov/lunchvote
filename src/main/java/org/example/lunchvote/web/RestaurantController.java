@@ -1,4 +1,4 @@
-package org.example.lunchvote.web.restaurant;
+package org.example.lunchvote.web;
 
 import org.example.lunchvote.model.Restaurant;
 import org.example.lunchvote.repository.RestaurantRepository;

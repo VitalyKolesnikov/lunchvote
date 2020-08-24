@@ -14,10 +14,10 @@ FROM RESTAURANTS;
 ALTER SEQUENCE GLOBAL_SEQ RESTART WITH 100000;
 
 INSERT INTO USERS (NAME, EMAIL, PASSWORD)
-VALUES ('User1', 'user1@gmail.com', 'pass1'),
-       ('User2', 'user2@gmail.com', 'pass2'),
-       ('User3', 'user3@gmail.com', 'pass3'),
-       ('Admin', 'admin@gmail.com', 'pass_admin');
+VALUES ('User1', 'user1@gmail.com', '{noop}pass1'),
+       ('User2', 'user2@gmail.com', '{noop}pass2'),
+       ('User3', 'user3@gmail.com', '{noop}pass3'),
+       ('Admin', 'admin@gmail.com', '{noop}pass_admin');
 
 INSERT INTO USER_ROLES (ROLE, USER_ID)
 VALUES ('USER', 100000),
@@ -58,7 +58,7 @@ VALUES (100007, 100010),
        (100009, 100017),
        (100009, 100018);
 
-INSERT INTO VOTES (USER_ID, RESTAURANT_ID, DATE_TIME)
+INSERT INTO VOTES (USER_ID, RESTAURANT_ID, DATE)
 VALUES (100000, 100004, '2020-07-02 11:00:00'),
        (100001, 100005, '2020-07-02 11:25:00'),
        (100002, 100006, '2020-07-02 11:50:00');
