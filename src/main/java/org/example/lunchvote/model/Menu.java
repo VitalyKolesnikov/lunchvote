@@ -9,7 +9,7 @@ import java.util.List;
 @Table(name = "menus")
 public class Menu extends AbstractBaseEntity {
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 

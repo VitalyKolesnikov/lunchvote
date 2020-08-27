@@ -24,3 +24,47 @@ As a result, provide a link to github repository. It should contain the code, RE
 P.S.: Make sure everything works with latest version that is on github :)
 
 P.P.S.: Asume that your API will be used by a frontend developer to build frontend on top of that.
+
+# REST API
+
+## Restaurants (access for admins only)
+
+###Get all
+
+GET /rest/admin/restaurants
+
+    curl -s http://localhost:8080/lunchvote/rest/admin/restaurants -u admin@gmail.com:pass_admin
+    
+###Get by ID
+
+GET /rest/admin/restaurants/{id}
+
+    curl -s http://localhost:8080/lunchvote/rest/admin/restaurants/100004 -u admin@gmail.com:pass_admin
+
+###Get by name
+
+GET /rest/admin/restaurants/by?name={name}
+
+    curl -s http://localhost:8080/lunchvote/rest/admin/restaurants/by?name=KFC -u admin@gmail.com:pass_admin
+    
+###Create new
+
+POST /rest/admin/restaurants
+
+Body: {"name": "{name}"}
+
+    curl -s -X POST -d '{"name":"BlackStar Burgers"}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/restaurants -u admin@gmail.com:pass_admin
+    
+###Update
+
+PUT /rest/admin/restaurants/{id}
+
+Body: {"name": "{name}"}
+
+    curl -s -X PUT -d '{"name":"Kentucky Fried Chicken"}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/restaurants/100004 -u admin@gmail.com:pass_admin
+    
+###Delete
+
+DELETE /rest/admin/restaurants/{id}
+
+    curl -s -X DELETE http://localhost:8080/lunchvote/rest/admin/restaurants/100004 -u admin@gmail.com:pass_admin

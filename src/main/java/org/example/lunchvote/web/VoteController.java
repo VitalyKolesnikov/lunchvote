@@ -25,7 +25,7 @@ import static org.example.lunchvote.util.ValidationUtil.checkNotFoundWithId;
 public class VoteController {
     protected final Logger log = LoggerFactory.getLogger(getClass());
     static final String REST_URL = "/rest/votes";
-    public static final LocalTime VOTING_DEADLINE = LocalTime.of(11, 0);
+    public static final LocalTime VOTING_DEADLINE = LocalTime.of(14, 0);
 
     private final VoteRepository voteRepository;
     private final RestaurantRepository restaurantRepository;
@@ -47,10 +47,10 @@ public class VoteController {
         return voteRepository.findByDateAndUserId(LocalDate.parse(date), SecurityUtil.authUserId());
     }
 
-    @PutMapping("/{restaurantId}")
+    @PutMapping
     @ResponseStatus(HttpStatus.OK)
     @Transactional
-    public void vote(@PathVariable int restaurantId, @AuthenticationPrincipal AuthorizedUser authUser) {
+    public void vote(@RequestParam int restaurantId, @AuthenticationPrincipal AuthorizedUser authUser) {
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElseThrow();
         LocalDate today = LocalDate.now();
         int userId = authUser.getId();
@@ -60,8 +60,10 @@ public class VoteController {
             voteRepository.save(new Vote(UserUtil.of(authUser.getUserTo()), restaurant, today));
         } else if (LocalTime.now().isBefore(VOTING_DEADLINE)) {
             log.info("User {} has re-voted for restaurant {}", userId, restaurantId);
+            oldVote.setRestaurant(restaurant);
+            voteRepository.save(oldVote);
         } else {
-            throw new VotingException("Vote change is not possible already for today");
+            throw new VotingException("Re-vote is not possible already for today");
         }
     }
 }

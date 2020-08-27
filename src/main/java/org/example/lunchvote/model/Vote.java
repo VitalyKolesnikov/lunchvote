@@ -2,6 +2,7 @@ package org.example.lunchvote.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,13 +12,15 @@ import java.time.LocalDate;
 @Table(name = "votes")
 @Getter
 @Setter
+@ToString
 public class Vote extends AbstractBaseEntity {
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 

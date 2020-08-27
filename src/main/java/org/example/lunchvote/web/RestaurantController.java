@@ -22,19 +22,28 @@ public class RestaurantController {
     protected final Logger log = LoggerFactory.getLogger(getClass());
     static final String REST_URL = "/rest/admin/restaurants";
 
-    @Autowired
-    private RestaurantRepository repository;
+    private final RestaurantRepository repository;
+
+    public RestaurantController(RestaurantRepository repository) {
+        this.repository = repository;
+    }
 
     @GetMapping
     public List<Restaurant> getAll() {
-        log.info("getAll");
-        return repository.getAll();
+        log.info("Get all restaurants");
+        return repository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Restaurant get(@PathVariable int id) {
-        log.info("get {}", id);
-        return checkNotFoundWithId(repository.get(id), id);
+    public Restaurant getById(@PathVariable int id) {
+        log.info("Get restaurant by id {}", id);
+        return repository.findById(id).orElseThrow();
+    }
+
+    @GetMapping("/by")
+    public Restaurant getByName(@RequestParam String name) {
+        log.info("getByName {}", name);
+        return repository.findByName(name);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -48,13 +57,6 @@ public class RestaurantController {
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable int id) {
-        log.info("delete {}", id);
-        repository.delete(id);
-    }
-
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void update(@RequestBody Restaurant restaurant, @PathVariable int id) {
@@ -63,9 +65,10 @@ public class RestaurantController {
         repository.save(restaurant);
     }
 
-    @GetMapping("/by")
-    public Restaurant getByName(@RequestParam String name) {
-        log.info("getByName {}", name);
-        return repository.getByName(name);
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable int id) {
+        log.info("delete restaurant with id={}", id);
+        repository.delete(id);
     }
 }
