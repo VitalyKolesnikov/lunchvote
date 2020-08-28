@@ -17,15 +17,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
-import static org.example.lunchvote.util.ValidationUtil.checkNotFoundWithId;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = VoteController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class VoteController {
     protected final Logger log = LoggerFactory.getLogger(getClass());
-    static final String REST_URL = "/rest/votes";
-    public static final LocalTime VOTING_DEADLINE = LocalTime.of(14, 0);
+    static final String REST_URL = "/rest";
+    public static final LocalTime VOTING_DEADLINE = LocalTime.of(11, 0);
 
     private final VoteRepository voteRepository;
     private final RestaurantRepository restaurantRepository;
@@ -35,19 +34,20 @@ public class VoteController {
         this.restaurantRepository = restaurantRepository;
     }
 
-    @GetMapping("/{id}")
-    public Vote get(@PathVariable int id) {
-        log.info("get {}", id);
-        return checkNotFoundWithId(voteRepository.get(id), id);
+    @GetMapping("admin/votes/todays")
+    public List<Vote> getTodays() {
+        log.info("get today`s votes");
+        List<Vote> votes = voteRepository.findAllByDate(LocalDate.now());
+        return votes;
     }
 
-    @GetMapping("/by")
-    public Vote getByDate(@RequestParam String date) {
-        log.info("getByDate {}", date);
-        return voteRepository.findByDateAndUserId(LocalDate.parse(date), SecurityUtil.authUserId());
+    @GetMapping("admin/votes/by")
+    public List<Vote> getByDate(@RequestParam LocalDate date) {
+        log.info("get votes by date {}", date);
+        return voteRepository.findAllByDate(date);
     }
 
-    @PutMapping
+    @PutMapping("vote")
     @ResponseStatus(HttpStatus.OK)
     @Transactional
     public void vote(@RequestParam int restaurantId, @AuthenticationPrincipal AuthorizedUser authUser) {

@@ -13,8 +13,6 @@ import javax.persistence.*;
 
 @MappedSuperclass
 @Access(AccessType.FIELD)
-@Getter
-@Setter
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public abstract class AbstractBaseEntity implements HasId {
     public static final int START_SEQ = 100000;
@@ -35,6 +33,16 @@ public abstract class AbstractBaseEntity implements HasId {
     public int id() {
         Assert.notNull(id, "Entity must have id");
         return id;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public boolean isNew() {

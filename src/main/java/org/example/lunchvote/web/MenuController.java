@@ -52,7 +52,7 @@ public class MenuController {
 
     @GetMapping("/by")
     public List<Menu> getByDate(@RequestParam @NotNull LocalDate date) {
-        log.info("Get today`s menus");
+        log.info("Get menus by date {}", date);
         return menuRepository.findByDate(date);
     }
 

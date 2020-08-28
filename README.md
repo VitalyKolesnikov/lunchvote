@@ -124,3 +124,19 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
 #### Delete
 
     curl -s -X DELETE http://localhost:8080/lunchvote/rest/admin/users/100001 -u admin@gmail.com:pass_admin
+    
+### Votes (access for admins only)
+
+#### Get today`s
+
+    curl -s http://localhost:8080/lunchvote/rest/admin/votes/todays -u admin@gmail.com:pass_admin
+    
+#### Get by date
+
+    curl -s http://localhost:8080/lunchvote/rest/admin/votes/by?date=2020-08-28 -u admin@gmail.com:pass_admin
+    
+### Votes (access for all authorized users)
+
+#### Vote for restaurant
+
+    curl -s -X PUT -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/vote?restaurantId=100006 -u user3@gmail.com:pass3
