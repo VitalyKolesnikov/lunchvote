@@ -13,23 +13,14 @@ import java.util.List;
 @Transactional(readOnly = true)
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    // null if not found, when updated
-    @Transactional
-    User save(User user);
+    List<User> findAll();
 
-    // null if not found
-    @Query("FROM User u WHERE u.id=:id")
-    User get(@Param("id") int id);
+    User findById(@Param("id") int id);
 
-    // false if not found
+    User findByEmail(@Param("email") String email);
+
     @Transactional
     @Modifying
     @Query("DELETE FROM User u WHERE u.id=:id")
     int delete(@Param("id") int id);
-
-    // null if not found
-    User getByEmail(String email);
-
-    @Query("FROM User u")
-    List<User> getAll();
 }

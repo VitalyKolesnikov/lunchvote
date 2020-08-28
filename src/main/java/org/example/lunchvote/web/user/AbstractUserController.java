@@ -18,12 +18,17 @@ public abstract class AbstractUserController {
 
     public List<User> getAll() {
         log.info("getAll");
-        return repository.getAll();
+        return repository.findAll();
     }
 
     public User get(int id) {
         log.info("get {}", id);
-        return checkNotFoundWithId(repository.get(id), id);
+        return checkNotFoundWithId(repository.findById(id), id);
+    }
+
+    public User getByEmail(String email) {
+        log.info("getByEmail {}", email);
+        return repository.findByEmail(email);
     }
 
     public User create(User user) {
@@ -32,19 +37,14 @@ public abstract class AbstractUserController {
         return repository.save(user);
     }
 
-    public void delete(int id) {
-        log.info("delete {}", id);
-        repository.delete(id);
-    }
-
     public void update(User user, int id) {
         log.info("update {} with id={}", user, id);
         assureIdConsistent(user, id);
         repository.save(user);
     }
 
-    public User getByMail(String email) {
-        log.info("getByEmail {}", email);
-        return repository.getByEmail(email);
+    public void delete(int id) {
+        log.info("delete {}", id);
+        repository.delete(id);
     }
 }

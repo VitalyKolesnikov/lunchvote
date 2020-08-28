@@ -98,3 +98,29 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
 #### Delete
 
     curl -s -X DELETE http://localhost:8080/lunchvote/rest/admin/menus/100007 -u admin@gmail.com:pass_admin
+    
+### Users (access for admins only)
+
+#### Get all
+
+    curl -s http://localhost:8080/lunchvote/rest/admin/users -u admin@gmail.com:pass_admin
+    
+#### Get by ID
+
+    curl -s http://localhost:8080/lunchvote/rest/admin/users/100000 -u admin@gmail.com:pass_admin
+
+#### Get by email
+
+    curl -s http://localhost:8080/lunchvote/rest/admin/users/by?email=user2@gmail.com -u admin@gmail.com:pass_admin
+    
+#### Create
+
+    curl -s -X POST -d '{"name": "User4", "email": "user4@gmail.com", "password": "{noop}pass4", "roles": ["USER"]}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/users -u admin@gmail.com:pass_admin
+    
+#### Update
+
+    curl -s -X PUT -d '{"name": "User33", "email": "user33@gmail.com", "password": "pass33", "roles": ["USER"]}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/users/100002 -u admin@gmail.com:pass_admin
+    
+#### Delete
+
+    curl -s -X DELETE http://localhost:8080/lunchvote/rest/admin/users/100001 -u admin@gmail.com:pass_admin

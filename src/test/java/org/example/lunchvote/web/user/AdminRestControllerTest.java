@@ -48,7 +48,7 @@ class AdminRestControllerTest extends AbstractControllerTest {
         perform(MockMvcRequestBuilders.delete(REST_URL + USER1_ID))
                 .andDo(print())
                 .andExpect(status().isNoContent());
-        assertNull(repository.get(USER1_ID));
+        assertNull(repository.findById(USER1_ID));
     }
 
     @Test
@@ -59,7 +59,7 @@ class AdminRestControllerTest extends AbstractControllerTest {
                 .content(JsonUtil.writeValue(updated)))
                 .andExpect(status().isNoContent());
 
-        USER_MATCHER.assertMatch(repository.get(USER1_ID), updated);
+        USER_MATCHER.assertMatch(repository.findById(USER1_ID), updated);
     }
 
     @Test
@@ -74,7 +74,7 @@ class AdminRestControllerTest extends AbstractControllerTest {
         int newId = created.id();
         newUser.setId(newId);
         USER_MATCHER.assertMatch(created, newUser);
-        USER_MATCHER.assertMatch(repository.get(newId), newUser);
+        USER_MATCHER.assertMatch(repository.findById(newId), newUser);
     }
 
     @Test
