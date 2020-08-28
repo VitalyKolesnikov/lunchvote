@@ -1,5 +1,9 @@
 package org.example.lunchvote.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -7,9 +11,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "menus")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Menu extends AbstractBaseEntity {
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
@@ -20,27 +27,10 @@ public class Menu extends AbstractBaseEntity {
     @OneToMany(mappedBy = "menu")
     private List<Dish> dishes;
 
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
+    public Menu(Integer id, LocalDate date, Restaurant restaurant) {
+        super(id);
+        this.date = date;
         this.restaurant = restaurant;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public List<Dish> getDishes() {
-        return dishes;
-    }
-
-    public void setDishes(List<Dish> dishes) {
-        this.dishes = dishes;
-    }
 }

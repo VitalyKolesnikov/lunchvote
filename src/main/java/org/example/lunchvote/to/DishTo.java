@@ -1,11 +1,15 @@
 package org.example.lunchvote.to;
 
 import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Getter
+@Setter
+@ToString
 public class DishTo extends BaseTo {
 
     @NotBlank
@@ -16,13 +20,4 @@ public class DishTo extends BaseTo {
 
     private int menuId;
 
-    @Override
-    public String toString() {
-        return "DishTo{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", menuId=" + menuId +
-                '}';
-    }
 }

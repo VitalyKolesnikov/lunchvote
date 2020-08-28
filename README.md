@@ -3,9 +3,9 @@ Lunchvote Graduation Project
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/fee1d70912884e5da9f147a5424449d0)](https://www.codacy.com/manual/VitalyKolesnikov/lunchvote?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VitalyKolesnikov/lunchvote&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/VitalyKolesnikov/lunchvote.svg?branch=master)](https://travis-ci.org/VitalyKolesnikov/lunchvote)
 
-Design and implement a REST API using Hibernate/Spring/SpringMVC (or Spring-Boot) without frontend.
+## Task
 
-The task is:
+Design and implement a REST API using Hibernate/Spring/SpringMVC (or Spring-Boot) without frontend.
 
 Build a voting system for deciding where to have lunch.
 
@@ -25,7 +25,7 @@ P.S.: Make sure everything works with latest version that is on github :)
 
 P.P.S.: Asume that your API will be used by a frontend developer to build frontend on top of that.
 
-# REST API
+## REST API
 
 > All requests require basic authorization.
 
@@ -43,7 +43,7 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
 
     curl -s http://localhost:8080/lunchvote/rest/admin/restaurants/by?name=KFC -u admin@gmail.com:pass_admin
     
-#### Create new
+#### Create
 
     curl -s -X POST -d '{"name":"BlackStar Burgers"}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/restaurants -u admin@gmail.com:pass_admin
     
@@ -61,9 +61,9 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
 
     curl -s http://localhost:8080/lunchvote/rest/admin/dishes/100012 -u admin@gmail.com:pass_admin
 
-#### Create new
+#### Create
 
-    curl -s -X POST -d '{"name": "Caesar roll", "price": 200, "menuId": 100007}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/dishes -u admin@gmail.com:pass_admin
+    curl -s -X POST -d '{"name": "Shrimp roll", "price": 300, "menuId": 100007}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/dishes -u admin@gmail.com:pass_admin
     
 #### Update
 
@@ -72,3 +72,29 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
 #### Delete
 
     curl -s -X DELETE http://localhost:8080/lunchvote/rest/admin/dishes/100018 -u admin@gmail.com:pass_admin
+    
+### Menus (access for admins only)
+
+#### Get by ID
+
+    curl -s http://localhost:8080/lunchvote/rest/admin/menus/100007 -u admin@gmail.com:pass_admin
+    
+#### Get today`s
+
+    curl -s http://localhost:8080/lunchvote/rest/admin/menus/todays -u admin@gmail.com:pass_admin
+    
+#### Get by date
+
+    curl -s http://localhost:8080/lunchvote/rest/admin/menus/by?date=2020-08-29 -u admin@gmail.com:pass_admin
+
+#### Create
+
+    curl -s -X POST -d '{"restaurantId":100004, "date":"2020-08-29"}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/menus -u admin@gmail.com:pass_admin
+    
+#### Update
+
+    curl -s -X PUT -d '{"restaurantId":100004, "date":"2020-08-30"}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/menus/100022 -u admin@gmail.com:pass_admin
+    
+#### Delete
+
+    curl -s -X DELETE http://localhost:8080/lunchvote/rest/admin/menus/100007 -u admin@gmail.com:pass_admin

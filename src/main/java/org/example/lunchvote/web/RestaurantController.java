@@ -42,13 +42,13 @@ public class RestaurantController {
 
     @GetMapping("/by")
     public Restaurant getByName(@RequestParam String name) {
-        log.info("getByName {}", name);
+        log.info("Get restaurant by name {}", name);
         return repository.findByName(name);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Restaurant> createWithLocation(@RequestBody Restaurant restaurant) {
-        log.info("create {}", restaurant);
+        log.info("Create new restaurant {}", restaurant);
         checkNew(restaurant);
         Restaurant created = repository.save(restaurant);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -60,7 +60,7 @@ public class RestaurantController {
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void update(@RequestBody Restaurant restaurant, @PathVariable int id) {
-        log.info("update {} with id={}", restaurant, id);
+        log.info("Update restaurant with id={}", id);
         assureIdConsistent(restaurant, id);
         repository.save(restaurant);
     }

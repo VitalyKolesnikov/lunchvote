@@ -60,12 +60,12 @@ public class DishController {
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @Transactional
     public void update(@Valid @RequestBody DishTo dishTo, @PathVariable int id) {
-        log.info("Update dish with id={}", id);
+        log.info("Update dish with id {}", id);
         assureIdConsistent(dishTo, id);
 
         Dish oldDish = dishRepository.findById(id).orElseThrow();
         Menu menu = oldDish.getMenu();
-        Integer menuId = menu.getId();
+        int menuId = menu.getId();
 
         int newMenuId = dishTo.getMenuId();
         if (newMenuId != menuId) {

@@ -7,17 +7,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Transactional(readOnly = true)
 public interface MenuRepository extends JpaRepository<Menu, Integer> {
-    // null if not found, when updated
-    @Transactional
-    Menu save(Menu menu);
 
-    // null if not found
-    @Query("FROM Menu m WHERE m.id=:id")
-    Menu get(@Param("id") int id);
+    @Query("SELECT m FROM Menu m JOIN FETCH m.restaurant LEFT JOIN FETCH m.dishes WHERE m.id=:id")
+    Menu findByIdEager(@Param("id") int id);
 
-    // false if not found
+    @Query("SELECT DISTINCT m FROM Menu m JOIN FETCH m.restaurant LEFT JOIN FETCH m.dishes WHERE m.date=:date")
+    List<Menu> findByDate(@Param("date") LocalDate date);
+
     @Transactional
     @Modifying
     @Query("DELETE FROM Menu m WHERE m.id=:id")
