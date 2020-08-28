@@ -17,12 +17,7 @@ public class Menu extends AbstractBaseEntity {
     @NotNull
     private LocalDate date;
 
-    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "menus_dishes",
-            joinColumns = {@JoinColumn(name = "menu_id")},
-            inverseJoinColumns = {@JoinColumn(name = "dish_id")}
-    )
+    @OneToMany(mappedBy = "menu")
     private List<Dish> dishes;
 
     public Restaurant getRestaurant() {

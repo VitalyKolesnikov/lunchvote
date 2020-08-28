@@ -27,44 +27,48 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
 
 # REST API
 
-## Restaurants (access for admins only)
+> All requests require basic authorization.
 
-###Get all
+### Restaurants (access for admins only)
 
-GET /rest/admin/restaurants
+#### Get all
 
     curl -s http://localhost:8080/lunchvote/rest/admin/restaurants -u admin@gmail.com:pass_admin
     
-###Get by ID
-
-GET /rest/admin/restaurants/{id}
+#### Get by ID
 
     curl -s http://localhost:8080/lunchvote/rest/admin/restaurants/100004 -u admin@gmail.com:pass_admin
 
-###Get by name
-
-GET /rest/admin/restaurants/by?name={name}
+#### Get by name
 
     curl -s http://localhost:8080/lunchvote/rest/admin/restaurants/by?name=KFC -u admin@gmail.com:pass_admin
     
-###Create new
-
-POST /rest/admin/restaurants
-
-Body: {"name": "{name}"}
+#### Create new
 
     curl -s -X POST -d '{"name":"BlackStar Burgers"}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/restaurants -u admin@gmail.com:pass_admin
     
-###Update
-
-PUT /rest/admin/restaurants/{id}
-
-Body: {"name": "{name}"}
+#### Update
 
     curl -s -X PUT -d '{"name":"Kentucky Fried Chicken"}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/restaurants/100004 -u admin@gmail.com:pass_admin
     
-###Delete
-
-DELETE /rest/admin/restaurants/{id}
+#### Delete
 
     curl -s -X DELETE http://localhost:8080/lunchvote/rest/admin/restaurants/100004 -u admin@gmail.com:pass_admin
+    
+### Dishes (access for admins only)
+
+#### Get by ID
+
+    curl -s http://localhost:8080/lunchvote/rest/admin/dishes/100012 -u admin@gmail.com:pass_admin
+
+#### Create new
+
+    curl -s -X POST -d '{"name": "Caesar roll", "price": 200, "menuId": 100007}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/dishes -u admin@gmail.com:pass_admin
+    
+#### Update
+
+    curl -s -X PUT -d '{"name": "Coca-cola light", "price": 95, "menuId": 100007}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/dishes/100012 -u admin@gmail.com:pass_admin
+    
+#### Delete
+
+    curl -s -X DELETE http://localhost:8080/lunchvote/rest/admin/dishes/100018 -u admin@gmail.com:pass_admin

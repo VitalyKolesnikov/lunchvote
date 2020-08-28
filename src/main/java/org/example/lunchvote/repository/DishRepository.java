@@ -9,15 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional(readOnly = true)
 public interface DishRepository extends JpaRepository<Dish, Integer> {
-    // null if not found, when updated
-    @Transactional
-    Dish save(Dish dish);
 
-    // null if not found
-    @Query("FROM Dish d WHERE d.id=:id")
-    Dish get(@Param("id") int id);
-
-    // false if not found
     @Transactional
     @Modifying
     @Query("DELETE FROM Dish d WHERE d.id=:id")
