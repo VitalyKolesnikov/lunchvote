@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 @Entity
 @Table(name = "dishes")
@@ -25,7 +26,7 @@ public class Dish extends AbstractNamedEntity {
     }
 
     @Column(name = "price", nullable = false)
-    @NotNull
+    @PositiveOrZero
     private int price;
 
     @ManyToOne(fetch = FetchType.LAZY)

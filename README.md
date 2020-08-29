@@ -129,7 +129,7 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
     
 ### Votes (access for admins only)
 
-#### Get vote result by date
+#### Get voting result by date
 
     curl -s http://localhost:8080/lunchvote/rest/admin/votes/result?date=2020-08-28 -u admin@gmail.com:pass_admin
 

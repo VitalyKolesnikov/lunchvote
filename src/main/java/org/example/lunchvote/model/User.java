@@ -1,6 +1,8 @@
 package org.example.lunchvote.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
@@ -13,6 +15,8 @@ import java.util.Set;
 
 @Entity
 @Getter
+@NoArgsConstructor
+@ToString
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "users_unique_email_idx")})
 public class User extends AbstractNamedEntity {
 
@@ -33,9 +37,6 @@ public class User extends AbstractNamedEntity {
     @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<Role> roles;
-
-    public User() {
-    }
 
     public User(User u) {
         this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.getRoles());
@@ -64,14 +65,4 @@ public class User extends AbstractNamedEntity {
         this.roles = CollectionUtils.isEmpty(roles) ? EnumSet.noneOf(Role.class) : EnumSet.copyOf(roles);
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", roles=" + roles +
-                '}';
-    }
 }

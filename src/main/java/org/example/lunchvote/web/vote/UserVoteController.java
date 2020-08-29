@@ -25,7 +25,7 @@ public class UserVoteController {
 
     protected final Logger log = LoggerFactory.getLogger(getClass());
     static final String REST_URL = "/rest/votes";
-    public static final LocalTime VOTING_DEADLINE = LocalTime.of(11, 0);
+    public static final LocalTime VOTING_DEADLINE = LocalTime.of(0, 38);
 
     private final VoteRepository voteRepository;
     private final RestaurantRepository restaurantRepository;

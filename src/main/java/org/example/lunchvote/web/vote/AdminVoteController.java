@@ -2,7 +2,7 @@ package org.example.lunchvote.web.vote;
 
 import org.example.lunchvote.model.Vote;
 import org.example.lunchvote.repository.VoteRepository;
-import org.example.lunchvote.to.VoteResultTo;
+import org.example.lunchvote.to.VotingResultTo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -35,12 +35,12 @@ public class AdminVoteController {
     }
 
     @GetMapping("result")
-    public List<VoteResultTo> getResult(@RequestParam LocalDate date) {
+    public List<VotingResultTo> getResult(@RequestParam LocalDate date) {
         log.info("get vote result ");
         return voteRepository.getVoteResult(date)
                 .stream()
                 .sorted(Comparator
-                        .comparingLong(VoteResultTo::getVoteCount)
+                        .comparingLong(VotingResultTo::getVoteCount)
                         .reversed())
                 .collect(Collectors.toList());
     }

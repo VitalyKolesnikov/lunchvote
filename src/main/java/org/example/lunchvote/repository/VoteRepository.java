@@ -1,7 +1,7 @@
 package org.example.lunchvote.repository;
 
 import org.example.lunchvote.model.Vote;
-import org.example.lunchvote.to.VoteResultTo;
+import org.example.lunchvote.to.VotingResultTo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,7 +21,7 @@ public interface VoteRepository extends JpaRepository<Vote, Integer> {
 
     List<Vote> findAllByUserIdOrderByDateDesc(@Param("id") int userId);
 
-    @Query("SELECT new org.example.lunchvote.to.VoteResultTo(v.restaurant, COUNT(v)) " +
+    @Query("SELECT new org.example.lunchvote.to.VotingResultTo(v.restaurant, COUNT(v)) " +
             "FROM Vote v WHERE v.date=:date GROUP BY v.restaurant")
-    List<VoteResultTo> getVoteResult(@Param("date") LocalDate date);
+    List<VotingResultTo> getVoteResult(@Param("date") LocalDate date);
 }

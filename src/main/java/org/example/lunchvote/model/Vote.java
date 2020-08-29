@@ -1,6 +1,7 @@
 package org.example.lunchvote.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 @Table(name = "votes")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Vote extends AbstractBaseEntity {
 
     @NotNull
@@ -26,8 +28,6 @@ public class Vote extends AbstractBaseEntity {
     @Column(name = "date", nullable = false)
     @NotNull
     private LocalDate date;
-
-    public Vote(){}
 
     public Vote(User user, Restaurant restaurant, LocalDate date) {
         this.user = user;

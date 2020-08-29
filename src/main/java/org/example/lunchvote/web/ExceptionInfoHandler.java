@@ -51,10 +51,10 @@ public class ExceptionInfoHandler {
         return logAndGetErrorInfo(req, e, false, DATA_NOT_FOUND);
     }
 
-    @ResponseStatus(value = HttpStatus.UNPROCESSABLE_ENTITY)  // 422
+    @ResponseStatus(value = HttpStatus.I_AM_A_TEAPOT)  // 418
     @ExceptionHandler(VotingException.class)
     public ErrorInfo VotingError(HttpServletRequest req, RuntimeException e) {
-        return logAndGetErrorInfo(req, e, false, VALIDATION_ERROR);
+        return logAndGetErrorInfo(req, e, false, VOTING_ERROR);
     }
 
     @ResponseStatus(value = HttpStatus.CONFLICT)  // 409
@@ -78,7 +78,9 @@ public class ExceptionInfoHandler {
         BindingResult result = e instanceof BindException ?
                 ((BindException) e).getBindingResult() : ((MethodArgumentNotValidException) e).getBindingResult();
 
-        String[] details = result.getFieldErrors().toArray(String[]::new);
+        String[] details = result.getFieldErrors().stream()
+                .map(err -> err.getField() + ": " + err.getDefaultMessage())
+                .toArray(String[]::new);
 
         return logAndGetErrorInfo(req, e, false, VALIDATION_ERROR, details);
     }

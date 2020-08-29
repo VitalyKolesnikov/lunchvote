@@ -18,6 +18,7 @@ public class Menu extends AbstractBaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
+    @NotNull
     private Restaurant restaurant;
 
     @Column(name = "date", nullable = false)
