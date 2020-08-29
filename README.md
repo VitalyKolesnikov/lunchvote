@@ -79,13 +79,9 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
 
     curl -s http://localhost:8080/lunchvote/rest/admin/menus/100007 -u admin@gmail.com:pass_admin
     
-#### Get today`s
-
-    curl -s http://localhost:8080/lunchvote/rest/admin/menus/todays -u admin@gmail.com:pass_admin
-    
 #### Get by date
 
-    curl -s http://localhost:8080/lunchvote/rest/admin/menus/by?date=2020-08-29 -u admin@gmail.com:pass_admin
+    curl -s http://localhost:8080/lunchvote/rest/admin/menus/filter?date=2020-08-28 -u admin@gmail.com:pass_admin
 
 #### Create
 
@@ -98,6 +94,12 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
 #### Delete
 
     curl -s -X DELETE http://localhost:8080/lunchvote/rest/admin/menus/100007 -u admin@gmail.com:pass_admin
+
+### Menus (access for all authorized users)
+
+#### Get todays menu
+
+    curl -s http://localhost:8080/lunchvote/rest/menus -u user1@gmail.com:pass1
     
 ### Users (access for admins only)
 
@@ -127,15 +129,19 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
     
 ### Votes (access for admins only)
 
-#### Get today`s
+#### Get vote result by date
 
-    curl -s http://localhost:8080/lunchvote/rest/admin/votes/todays -u admin@gmail.com:pass_admin
-    
+    curl -s http://localhost:8080/lunchvote/rest/admin/votes/result?date=2020-08-28 -u admin@gmail.com:pass_admin
+
 #### Get by date
 
-    curl -s http://localhost:8080/lunchvote/rest/admin/votes/by?date=2020-08-28 -u admin@gmail.com:pass_admin
+    curl -s http://localhost:8080/lunchvote/rest/admin/votes/filter?date=2020-08-28 -u admin@gmail.com:pass_admin
     
 ### Votes (access for all authorized users)
+
+#### Get vote history
+
+    curl -s http://localhost:8080/lunchvote/rest/votes -u user1@gmail.com:pass1
 
 #### Vote for restaurant
 

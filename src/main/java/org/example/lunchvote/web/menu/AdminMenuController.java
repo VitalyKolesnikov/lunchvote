@@ -1,11 +1,9 @@
-package org.example.lunchvote.web;
+package org.example.lunchvote.web.menu;
 
-import org.example.lunchvote.model.Dish;
 import org.example.lunchvote.model.Menu;
 import org.example.lunchvote.model.Restaurant;
 import org.example.lunchvote.repository.MenuRepository;
 import org.example.lunchvote.repository.RestaurantRepository;
-import org.example.lunchvote.to.DishTo;
 import org.example.lunchvote.to.MenuTo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,15 +23,15 @@ import java.util.List;
 import static org.example.lunchvote.util.ValidationUtil.*;
 
 @RestController
-@RequestMapping(value = MenuController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class MenuController {
+@RequestMapping(value = AdminMenuController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+public class AdminMenuController {
     protected final Logger log = LoggerFactory.getLogger(getClass());
     static final String REST_URL = "/rest/admin/menus";
 
     private final MenuRepository menuRepository;
     private final RestaurantRepository restaurantRepository;
 
-    public MenuController(MenuRepository menuRepository, RestaurantRepository restaurantRepository) {
+    public AdminMenuController(MenuRepository menuRepository, RestaurantRepository restaurantRepository) {
         this.menuRepository = menuRepository;
         this.restaurantRepository = restaurantRepository;
     }
@@ -44,13 +42,7 @@ public class MenuController {
         return checkNotFoundWithId(menuRepository.findByIdEager(id), id);
     }
 
-    @GetMapping("/todays")
-    public List<Menu> getTodays() {
-        log.info("Get today`s menus");
-        return menuRepository.findByDate(LocalDate.now());
-    }
-
-    @GetMapping("/by")
+    @GetMapping("/filter")
     public List<Menu> getByDate(@RequestParam @NotNull LocalDate date) {
         log.info("Get menus by date {}", date);
         return menuRepository.findByDate(date);

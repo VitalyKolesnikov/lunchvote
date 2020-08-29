@@ -1,4 +1,4 @@
-package org.example.lunchvote.web;
+package org.example.lunchvote.web.vote;
 
 import org.example.lunchvote.AuthorizedUser;
 import org.example.lunchvote.model.Restaurant;
@@ -20,34 +20,30 @@ import java.time.LocalTime;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = VoteController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class VoteController {
+@RequestMapping(value = UserVoteController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+public class UserVoteController {
+
     protected final Logger log = LoggerFactory.getLogger(getClass());
-    static final String REST_URL = "/rest";
+    static final String REST_URL = "/rest/votes";
     public static final LocalTime VOTING_DEADLINE = LocalTime.of(11, 0);
 
     private final VoteRepository voteRepository;
     private final RestaurantRepository restaurantRepository;
 
-    public VoteController(VoteRepository voteRepository, RestaurantRepository restaurantRepository) {
+    public UserVoteController(VoteRepository voteRepository, RestaurantRepository restaurantRepository) {
         this.voteRepository = voteRepository;
         this.restaurantRepository = restaurantRepository;
     }
 
-    @GetMapping("admin/votes/todays")
-    public List<Vote> getTodays() {
-        log.info("get today`s votes");
-        List<Vote> votes = voteRepository.findAllByDate(LocalDate.now());
-        return votes;
+
+    @GetMapping
+    public List<Vote> getHistory(@AuthenticationPrincipal AuthorizedUser authUser) {
+        int userId = authUser.getId();
+        log.info("Get all votes of user {}", userId);
+        return voteRepository.findAllByUserIdOrderByDateDesc(userId);
     }
 
-    @GetMapping("admin/votes/by")
-    public List<Vote> getByDate(@RequestParam LocalDate date) {
-        log.info("get votes by date {}", date);
-        return voteRepository.findAllByDate(date);
-    }
-
-    @PutMapping("vote")
+    @PutMapping
     @ResponseStatus(HttpStatus.OK)
     @Transactional
     public void vote(@RequestParam int restaurantId, @AuthenticationPrincipal AuthorizedUser authUser) {
