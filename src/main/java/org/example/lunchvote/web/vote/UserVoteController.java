@@ -43,7 +43,7 @@ public class UserVoteController {
         return voteRepository.findAllByUserIdOrderByDateDesc(userId);
     }
 
-    @PutMapping
+    @PostMapping
     @ResponseStatus(HttpStatus.OK)
     @Transactional
     public void vote(@RequestParam int restaurantId, @AuthenticationPrincipal AuthorizedUser authUser) {

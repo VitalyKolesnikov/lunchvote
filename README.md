@@ -37,7 +37,7 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
     
 #### Get by ID
 
-    curl -s http://localhost:8080/lunchvote/rest/admin/restaurants/100004 -u admin@gmail.com:pass_admin
+    curl -s http://localhost:8080/lunchvote/rest/admin/restaurants/100007 -u admin@gmail.com:pass_admin
 
 #### Get by name
 
@@ -49,25 +49,25 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
     
 #### Update
 
-    curl -s -X PUT -d '{"name":"Kentucky Fried Chicken"}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/restaurants/100004 -u admin@gmail.com:pass_admin
+    curl -s -X PUT -d '{"name":"Kentucky Fried Chicken"}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/restaurants/100007 -u admin@gmail.com:pass_admin
     
 #### Delete
 
-    curl -s -X DELETE http://localhost:8080/lunchvote/rest/admin/restaurants/100004 -u admin@gmail.com:pass_admin
+    curl -s -X DELETE http://localhost:8080/lunchvote/rest/admin/restaurants/100007 -u admin@gmail.com:pass_admin
     
 ### Dishes (access for admins only)
 
 #### Get by ID
 
-    curl -s http://localhost:8080/lunchvote/rest/admin/dishes/100012 -u admin@gmail.com:pass_admin
+    curl -s http://localhost:8080/lunchvote/rest/admin/dishes/100016 -u admin@gmail.com:pass_admin
 
 #### Create
 
-    curl -s -X POST -d '{"name": "Shrimp roll", "price": 300, "menuId": 100007}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/dishes -u admin@gmail.com:pass_admin
+    curl -s -X POST -d '{"name": "Shrimp roll", "price": 300, "menuId": 100010}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/dishes -u admin@gmail.com:pass_admin
     
 #### Update
 
-    curl -s -X PUT -d '{"name": "Coca-cola light", "price": 95, "menuId": 100007}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/dishes/100012 -u admin@gmail.com:pass_admin
+    curl -s -X PUT -d '{"name": "Coca-cola light", "price": 95, "menuId": 100010}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/dishes/100015 -u admin@gmail.com:pass_admin
     
 #### Delete
 
@@ -77,7 +77,7 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
 
 #### Get by ID
 
-    curl -s http://localhost:8080/lunchvote/rest/admin/menus/100007 -u admin@gmail.com:pass_admin
+    curl -s http://localhost:8080/lunchvote/rest/admin/menus/100010 -u admin@gmail.com:pass_admin
     
 #### Get by date
 
@@ -85,15 +85,15 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
 
 #### Create
 
-    curl -s -X POST -d '{"restaurantId":100004, "date":"2020-08-29"}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/menus -u admin@gmail.com:pass_admin
+    curl -s -X POST -d '{"restaurantId":100007, "date":"2020-08-29"}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/menus -u admin@gmail.com:pass_admin
     
 #### Update
 
-    curl -s -X PUT -d '{"restaurantId":100004, "date":"2020-08-30"}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/menus/100022 -u admin@gmail.com:pass_admin
+    curl -s -X PUT -d '{"restaurantId":100007, "date":"2020-08-30"}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/menus/100010 -u admin@gmail.com:pass_admin
     
 #### Delete
 
-    curl -s -X DELETE http://localhost:8080/lunchvote/rest/admin/menus/100007 -u admin@gmail.com:pass_admin
+    curl -s -X DELETE http://localhost:8080/lunchvote/rest/admin/menus/100011 -u admin@gmail.com:pass_admin
 
 ### Menus (access for all authorized users)
 
@@ -117,7 +117,7 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
     
 #### Create
 
-    curl -s -X POST -d '{"name": "User4", "email": "user4@gmail.com", "password": "{noop}pass4", "roles": ["USER"]}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/users -u admin@gmail.com:pass_admin
+    curl -s -X POST -d '{"name": "User7", "email": "user7@gmail.com", "password": "{noop}pass7", "roles": ["USER"]}' -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/admin/users -u admin@gmail.com:pass_admin
     
 #### Update
 
@@ -145,4 +145,4 @@ P.P.S.: Asume that your API will be used by a frontend developer to build fronte
 
 #### Vote for restaurant
 
-    curl -s -X PUT -H 'Content-Type:application/json' http://localhost:8080/lunchvote/rest/vote?restaurantId=100006 -u user3@gmail.com:pass3
+    curl -s -X POST http://localhost:8080/lunchvote/rest/votes?restaurantId=100009 -u user1@gmail.com:pass1
