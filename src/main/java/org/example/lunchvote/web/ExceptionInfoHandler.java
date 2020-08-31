@@ -50,7 +50,7 @@ public class ExceptionInfoHandler {
 
     @ResponseStatus(value = HttpStatus.I_AM_A_TEAPOT)  // 418
     @ExceptionHandler(VotingException.class)
-    public ErrorInfo VotingError(HttpServletRequest req, RuntimeException e) {
+    public ErrorInfo votingError(HttpServletRequest req, RuntimeException e) {
         return logAndGetErrorInfo(req, e, false, VOTING_ERROR);
     }
 

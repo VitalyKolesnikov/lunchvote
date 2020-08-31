@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.example.lunchvote.model.AbstractBaseEntity.START_SEQ;
 
-public class RestaurantTestData {
+public class RestaurantHelper {
     public static TestMatcher<Restaurant> RESTAURANT_MATCHER = TestMatcher.usingFieldsWithIgnoringAssertions(Restaurant.class);
 
     public static final int KFC_ID = START_SEQ + 7;

@@ -1,7 +1,6 @@
 package org.example.lunchvote.web;
 
 import org.example.lunchvote.model.Restaurant;
-import org.example.lunchvote.testdata.RestaurantTestData;
 import org.example.lunchvote.web.json.JsonUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,8 @@ import java.util.NoSuchElementException;
 
 import static org.example.lunchvote.TestUtil.readFromJson;
 import static org.example.lunchvote.TestUtil.userHttpBasic;
-import static org.example.lunchvote.testdata.RestaurantTestData.*;
-import static org.example.lunchvote.testdata.UserTestData.ADMIN;
+import static org.example.lunchvote.testdata.RestaurantHelper.*;
+import static org.example.lunchvote.testdata.UserHelper.ADMIN;
 import static org.example.lunchvote.util.exception.ErrorType.VALIDATION_ERROR;
 import static org.example.lunchvote.web.ExceptionInfoHandler.EXCEPTION_DUPLICATE_RESTAURANT_NAME;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -74,7 +73,7 @@ class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Test
     void createWithLocation() throws Exception {
-        Restaurant aNew = RestaurantTestData.getNew();
+        Restaurant aNew = getNew();
         ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(aNew))
@@ -89,7 +88,7 @@ class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Test
     void update() throws Exception {
-        Restaurant updated = RestaurantTestData.getUpdated();
+        Restaurant updated = getUpdated();
         perform(MockMvcRequestBuilders.put(REST_URL + KFC_ID).contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(updated))
                 .with(userHttpBasic(ADMIN)))

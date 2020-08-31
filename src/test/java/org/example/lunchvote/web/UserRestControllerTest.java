@@ -2,7 +2,6 @@ package org.example.lunchvote.web;
 
 import org.example.lunchvote.model.Role;
 import org.example.lunchvote.model.User;
-import org.example.lunchvote.testdata.UserTestData;
 import org.example.lunchvote.web.json.JsonUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import java.util.NoSuchElementException;
 
 import static org.example.lunchvote.TestUtil.readFromJson;
 import static org.example.lunchvote.TestUtil.userHttpBasic;
-import static org.example.lunchvote.testdata.UserTestData.*;
+import static org.example.lunchvote.testdata.UserHelper.*;
 import static org.example.lunchvote.util.exception.ErrorType.VALIDATION_ERROR;
 import static org.example.lunchvote.web.ExceptionInfoHandler.EXCEPTION_DUPLICATE_EMAIL;
 import static org.junit.jupiter.api.Assertions.assertThrows;
