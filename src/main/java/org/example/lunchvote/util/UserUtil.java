@@ -4,8 +4,6 @@ import org.example.lunchvote.model.Role;
 import org.example.lunchvote.model.User;
 import org.example.lunchvote.to.UserTo;
 
-import java.time.Instant;
-
 public final class UserUtil {
     private UserUtil() {
     }

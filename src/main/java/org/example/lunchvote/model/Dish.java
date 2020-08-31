@@ -2,6 +2,7 @@ package org.example.lunchvote.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -14,16 +15,8 @@ import javax.validation.constraints.PositiveOrZero;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class Dish extends AbstractNamedEntity {
-
-    public Dish() {
-    }
-
-    public Dish(Integer id, String name, int price, Menu menu) {
-        super(id, name);
-        this.price = price;
-        this.menu = menu;
-    }
 
     @Column(name = "price", nullable = false)
     @PositiveOrZero
@@ -34,4 +27,11 @@ public class Dish extends AbstractNamedEntity {
     @NotNull
     @JsonIgnore
     private Menu menu;
+
+    public Dish(Integer id, String name, int price, Menu menu) {
+        super(id, name);
+        this.price = price;
+        this.menu = menu;
+    }
+
 }

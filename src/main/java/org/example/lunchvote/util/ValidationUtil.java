@@ -1,7 +1,6 @@
 package org.example.lunchvote.util;
 
 import org.example.lunchvote.HasId;
-import org.example.lunchvote.model.AbstractBaseEntity;
 import org.example.lunchvote.util.exception.ErrorType;
 import org.example.lunchvote.util.exception.IllegalRequestDataException;
 import org.example.lunchvote.util.exception.NotFoundException;
