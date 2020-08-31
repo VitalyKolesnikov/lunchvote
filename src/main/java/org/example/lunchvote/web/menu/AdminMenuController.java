@@ -7,6 +7,7 @@ import org.example.lunchvote.repository.RestaurantRepository;
 import org.example.lunchvote.to.MenuTo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -66,6 +67,7 @@ public class AdminMenuController {
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    @CacheEvict(value = "menus", allEntries = true)
     @Transactional
     public void update(@Valid @RequestBody MenuTo menuTo, @PathVariable int id) {
         log.info("Update menu with id {}", id);
@@ -86,6 +88,7 @@ public class AdminMenuController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @CacheEvict(value = "menus", allEntries = true)
     public void delete(@PathVariable int id) {
         log.info("delete {}", id);
         menuRepository.delete(id);

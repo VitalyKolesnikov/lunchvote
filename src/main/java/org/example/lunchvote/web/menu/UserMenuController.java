@@ -4,6 +4,7 @@ import org.example.lunchvote.model.Menu;
 import org.example.lunchvote.repository.MenuRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ public class UserMenuController {
     }
 
     @GetMapping
+    @Cacheable("menus")
     public List<Menu> getTodays() {
         log.info("Get todays menu");
         return menuRepository.findByDate(LocalDate.now());
