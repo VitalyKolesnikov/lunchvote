@@ -20,8 +20,8 @@ import java.time.LocalTime;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = UserVoteController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class UserVoteController {
+@RequestMapping(value = UserVoteRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+public class UserVoteRestController {
 
     protected final Logger log = LoggerFactory.getLogger(getClass());
     static final String REST_URL = "/rest/votes";
@@ -30,7 +30,7 @@ public class UserVoteController {
     private final VoteRepository voteRepository;
     private final RestaurantRepository restaurantRepository;
 
-    public UserVoteController(VoteRepository voteRepository, RestaurantRepository restaurantRepository) {
+    public UserVoteRestController(VoteRepository voteRepository, RestaurantRepository restaurantRepository) {
         this.voteRepository = voteRepository;
         this.restaurantRepository = restaurantRepository;
     }

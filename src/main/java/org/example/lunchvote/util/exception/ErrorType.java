@@ -1,7 +1,9 @@
 package org.example.lunchvote.util.exception;
 
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+@Getter
 public enum ErrorType {
     APP_ERROR("Application error", HttpStatus.INTERNAL_SERVER_ERROR),
     //  http://stackoverflow.com/a/22358422/548473
@@ -19,11 +21,4 @@ public enum ErrorType {
         this.status = status;
     }
 
-    public String getErrorCode() {
-        return errorCode;
-    }
-
-    public HttpStatus getStatus() {
-        return status;
-    }
 }

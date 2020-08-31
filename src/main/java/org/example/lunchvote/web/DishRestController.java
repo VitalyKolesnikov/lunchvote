@@ -17,19 +17,18 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 
-import static org.example.lunchvote.util.ValidationUtil.assureIdConsistent;
-import static org.example.lunchvote.util.ValidationUtil.checkNew;
+import static org.example.lunchvote.util.ValidationUtil.*;
 
 @RestController
-@RequestMapping(value = DishController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class DishController {
+@RequestMapping(value = DishRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+public class DishRestController {
     protected final Logger log = LoggerFactory.getLogger(getClass());
     static final String REST_URL = "/rest/admin/dishes";
 
     private final DishRepository dishRepository;
     private final MenuRepository menuRepository;
 
-    public DishController(DishRepository dishRepository, MenuRepository menuRepository) {
+    public DishRestController(DishRepository dishRepository, MenuRepository menuRepository) {
         this.dishRepository = dishRepository;
         this.menuRepository = menuRepository;
     }
@@ -80,6 +79,6 @@ public class DishController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
         log.info("delete {}", id);
-        dishRepository.delete(id);
+        checkNotFoundWithId(dishRepository.delete(id) != 0, id);
     }
 }

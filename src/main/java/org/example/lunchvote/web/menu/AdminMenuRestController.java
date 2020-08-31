@@ -24,15 +24,15 @@ import java.util.List;
 import static org.example.lunchvote.util.ValidationUtil.*;
 
 @RestController
-@RequestMapping(value = AdminMenuController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class AdminMenuController {
+@RequestMapping(value = AdminMenuRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+public class AdminMenuRestController {
     protected final Logger log = LoggerFactory.getLogger(getClass());
     static final String REST_URL = "/rest/admin/menus";
 
     private final MenuRepository menuRepository;
     private final RestaurantRepository restaurantRepository;
 
-    public AdminMenuController(MenuRepository menuRepository, RestaurantRepository restaurantRepository) {
+    public AdminMenuRestController(MenuRepository menuRepository, RestaurantRepository restaurantRepository) {
         this.menuRepository = menuRepository;
         this.restaurantRepository = restaurantRepository;
     }
@@ -91,6 +91,6 @@ public class AdminMenuController {
     @CacheEvict(value = "menus", allEntries = true)
     public void delete(@PathVariable int id) {
         log.info("delete {}", id);
-        menuRepository.delete(id);
+        checkNotFoundWithId(menuRepository.delete(id) != 0, id);
     }
 }

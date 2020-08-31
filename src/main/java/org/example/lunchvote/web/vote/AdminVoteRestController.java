@@ -17,14 +17,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = AdminVoteController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class AdminVoteController {
+@RequestMapping(value = AdminVoteRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+public class AdminVoteRestController {
     protected final Logger log = LoggerFactory.getLogger(getClass());
     static final String REST_URL = "/rest/admin/votes";
 
     private final VoteRepository voteRepository;
 
-    public AdminVoteController(VoteRepository voteRepository) {
+    public AdminVoteRestController(VoteRepository voteRepository) {
         this.voteRepository = voteRepository;
     }
 

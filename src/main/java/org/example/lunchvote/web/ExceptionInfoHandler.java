@@ -1,10 +1,7 @@
 package org.example.lunchvote.web;
 
 import org.example.lunchvote.util.ValidationUtil;
-import org.example.lunchvote.util.exception.ErrorInfo;
-import org.example.lunchvote.util.exception.ErrorType;
-import org.example.lunchvote.util.exception.IllegalRequestDataException;
-import org.example.lunchvote.util.exception.VotingException;
+import org.example.lunchvote.util.exception.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
@@ -46,7 +43,7 @@ public class ExceptionInfoHandler {
             "menus_unique_restaurant_date_idx", EXCEPTION_DUPLICATE_MENU_RESTAURANT);
 
     @ResponseStatus(value = HttpStatus.UNPROCESSABLE_ENTITY)  //422
-    @ExceptionHandler(NoSuchElementException.class)
+    @ExceptionHandler({NoSuchElementException.class, NotFoundException.class})
     public ErrorInfo notFoundError(HttpServletRequest req, RuntimeException e) {
         return logAndGetErrorInfo(req, e, false, DATA_NOT_FOUND);
     }

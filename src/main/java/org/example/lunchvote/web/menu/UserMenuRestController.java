@@ -14,14 +14,14 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = UserMenuController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class UserMenuController {
+@RequestMapping(value = UserMenuRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+public class UserMenuRestController {
     protected final Logger log = LoggerFactory.getLogger(getClass());
     static final String REST_URL = "/rest/menus";
 
     private final MenuRepository menuRepository;
 
-    public UserMenuController(MenuRepository menuRepository) {
+    public UserMenuRestController(MenuRepository menuRepository) {
         this.menuRepository = menuRepository;
     }
 
