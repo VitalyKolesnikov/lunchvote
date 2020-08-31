@@ -38,7 +38,7 @@ public class UserRestController {
     @GetMapping("/{id}")
     public User get(@PathVariable int id) {
         log.info("get {}", id);
-        return checkNotFoundWithId(repository.findById(id), id);
+        return repository.findById(id).orElseThrow();
     }
 
     @GetMapping("/by")

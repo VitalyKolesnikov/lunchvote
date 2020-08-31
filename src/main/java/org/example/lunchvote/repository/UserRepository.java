@@ -13,10 +13,6 @@ import java.util.List;
 @Transactional(readOnly = true)
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    List<User> findAll();
-
-    User findById(@Param("id") int id);
-
     User findByEmail(@Param("email") String email);
 
     @Transactional

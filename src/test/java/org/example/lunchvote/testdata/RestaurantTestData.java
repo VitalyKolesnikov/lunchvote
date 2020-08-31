@@ -13,7 +13,6 @@ public class RestaurantTestData {
     public static final int KFC_ID = START_SEQ + 7;
     public static final int  BK_ID = START_SEQ + 8;
     public static final int MCD_ID = START_SEQ + 9;
-    public static final int NOT_FOUND_ID = START_SEQ + 75;
 
     public static final Restaurant KFC = new Restaurant(KFC_ID, "KFC");
     public static final Restaurant BK = new Restaurant(BK_ID, "Burger King");

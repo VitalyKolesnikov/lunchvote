@@ -35,7 +35,7 @@ public class RestaurantRestController {
     }
 
     @GetMapping("/{id}")
-    public Restaurant getById(@PathVariable int id) {
+    public Restaurant get(@PathVariable int id) {
         log.info("Get restaurant by id {}", id);
         return repository.findById(id).orElseThrow();
     }

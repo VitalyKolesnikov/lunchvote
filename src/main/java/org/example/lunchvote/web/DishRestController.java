@@ -34,7 +34,7 @@ public class DishRestController {
     }
 
     @GetMapping("/{id}")
-    public Dish getById(@PathVariable int id) {
+    public Dish get(@PathVariable int id) {
         log.info("Get dish by id {}", id);
         return dishRepository.findById(id).orElseThrow();
     }

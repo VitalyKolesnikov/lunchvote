@@ -6,11 +6,12 @@ import org.example.lunchvote.model.User;
 import org.example.lunchvote.web.json.JsonUtil;
 
 import java.util.Collections;
+import java.util.List;
 
 import static org.example.lunchvote.model.AbstractBaseEntity.START_SEQ;
 
 public class UserTestData {
-    public static TestMatcher<User> USER_MATCHER = TestMatcher.usingFieldsWithIgnoringAssertions(User.class);
+    public static TestMatcher<User> USER_MATCHER = TestMatcher.usingFieldsWithIgnoringAssertions(User.class, "password");
 
     public static final int USER1_ID = START_SEQ;
     public static final int USER2_ID = START_SEQ + 1;
@@ -26,7 +27,9 @@ public class UserTestData {
     public static final User USER4 = new User(USER4_ID, "User4", "user4@gmail.com", "pass4", Role.USER);
     public static final User USER5 = new User(USER5_ID, "User5", "user5@gmail.com", "pass5", Role.USER);
     public static final User USER6 = new User(USER6_ID, "User6", "user6@gmail.com", "pass6", Role.USER);
-    public static final User ADMIN = new User(ADMIN_ID, "Admin", "admin@gmail.com", "pass_admin", Role.ADMIN, Role.USER);
+    public static final User ADMIN = new User(ADMIN_ID, "Admin", "admin@gmail.com", "pass_admin", Role.USER, Role.ADMIN);
+
+    public static final List<User> USERS = List.of(USER1, USER2, USER3, USER4, USER5, USER6, ADMIN);
 
     public static User getNew() {
         return new User(null, "New", "new@gmail.com", "newPass", Collections.singleton(Role.USER));

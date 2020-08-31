@@ -66,7 +66,7 @@ class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Test
     void getNotFound() throws Exception {
-        perform(MockMvcRequestBuilders.get(REST_URL + 100055)
+        perform(MockMvcRequestBuilders.get(REST_URL + 1)
                 .with(userHttpBasic(ADMIN)))
                 .andDo(print())
                 .andExpect(status().isUnprocessableEntity());
@@ -84,7 +84,7 @@ class RestaurantRestControllerTest extends AbstractControllerTest {
         int newId = created.id();
         aNew.setId(newId);
         RESTAURANT_MATCHER.assertMatch(created, aNew);
-        RESTAURANT_MATCHER.assertMatch(controller.getById(newId), aNew);
+        RESTAURANT_MATCHER.assertMatch(controller.get(newId), aNew);
     }
 
     @Test
@@ -95,7 +95,7 @@ class RestaurantRestControllerTest extends AbstractControllerTest {
                 .with(userHttpBasic(ADMIN)))
                 .andExpect(status().isNoContent());
 
-        RESTAURANT_MATCHER.assertMatch(controller.getById(KFC_ID), updated);
+        RESTAURANT_MATCHER.assertMatch(controller.get(KFC_ID), updated);
     }
 
     @Test
@@ -103,12 +103,12 @@ class RestaurantRestControllerTest extends AbstractControllerTest {
         perform(MockMvcRequestBuilders.delete(REST_URL + KFC_ID)
                 .with(userHttpBasic(ADMIN)))
                 .andExpect(status().isNoContent());
-        assertThrows(NoSuchElementException.class, () -> controller.getById(KFC_ID));
+        assertThrows(NoSuchElementException.class, () -> controller.get(KFC_ID));
     }
 
     @Test
     void deleteNotFound() throws Exception {
-        perform(MockMvcRequestBuilders.delete(REST_URL + NOT_FOUND_ID)
+        perform(MockMvcRequestBuilders.delete(REST_URL + 1)
                 .with(userHttpBasic(ADMIN)))
                 .andExpect(status().isUnprocessableEntity());
     }
