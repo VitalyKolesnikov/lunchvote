@@ -25,9 +25,11 @@ P.S.: Make sure everything works with the latest version that is on github :)
 
 P.P.S.: Assume that your API will be used by a frontend developer to build frontend on top of that.
 
+>__There is a WAR-file in root folder to deploy in Tomcat.__
+
 ## REST API
 
-> All requests require basic authorization.
+>__All requests require basic authorization.__
 
 ### Restaurants (access for admins only)
 

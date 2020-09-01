@@ -3,7 +3,6 @@ package org.example.lunchvote.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -14,7 +13,6 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 public class Vote extends AbstractBaseEntity {
 
     @NotNull
@@ -44,4 +42,13 @@ public class Vote extends AbstractBaseEntity {
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return "Vote{" +
+                "id=" + id +
+                ", user=" + user +
+                ", restaurant=" + restaurant +
+                ", date=" + date +
+                '}';
+    }
 }
