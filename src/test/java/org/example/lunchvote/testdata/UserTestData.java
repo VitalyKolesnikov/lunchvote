@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.example.lunchvote.model.AbstractBaseEntity.START_SEQ;
 
-public class UserHelper {
+public class UserTestData {
     public static TestMatcher<User> USER_MATCHER = TestMatcher.usingFieldsWithIgnoringAssertions(User.class, "password");
 
     public static final int USER1_ID = START_SEQ;

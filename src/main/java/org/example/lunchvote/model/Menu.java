@@ -3,6 +3,7 @@ package org.example.lunchvote.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -14,6 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Menu extends AbstractBaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -28,10 +30,10 @@ public class Menu extends AbstractBaseEntity {
     @OneToMany(mappedBy = "menu")
     private List<Dish> dishes;
 
-    public Menu(Integer id, LocalDate date, Restaurant restaurant) {
+    public Menu(Integer id, Restaurant restaurant, LocalDate date) {
         super(id);
-        this.date = date;
         this.restaurant = restaurant;
+        this.date = date;
     }
 
 }

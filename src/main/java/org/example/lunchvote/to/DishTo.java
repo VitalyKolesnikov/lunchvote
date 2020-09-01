@@ -1,8 +1,10 @@
 package org.example.lunchvote.to;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.example.lunchvote.model.Dish;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -12,6 +14,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class DishTo extends BaseTo {
 
     @NotBlank
@@ -24,4 +27,10 @@ public class DishTo extends BaseTo {
     @NotNull
     private int menuId;
 
+    public DishTo(Dish dish) {
+        super(dish.getId());
+        this.name = dish.getName();
+        this.price = dish.getPrice();
+        this.menuId = dish.getMenu().getId();
+    }
 }

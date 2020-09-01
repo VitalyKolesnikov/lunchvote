@@ -31,9 +31,9 @@ public class ExceptionInfoHandler {
 
     public static final String EXCEPTION_DUPLICATE_EMAIL = "User with this email already exists";
     public static final String EXCEPTION_DUPLICATE_RESTAURANT_NAME = "Restaurant with this name already exists";
-    private static final String EXCEPTION_DUPLICATE_VOTE = "Re-vote is not possible already for today";
-    private static final String EXCEPTION_DUPLICATE_DISH_IN_MENU = "This dish is already in menu";
-    private static final String EXCEPTION_DUPLICATE_MENU_RESTAURANT = "Menu for this restaurant and date already exists";
+    public static final String EXCEPTION_DUPLICATE_VOTE = "Re-vote is not possible already for today";
+    public static final String EXCEPTION_DUPLICATE_DISH_IN_MENU = "This dish is already in menu";
+    public static final String EXCEPTION_DUPLICATE_MENU_RESTAURANT = "Menu for this restaurant and date already exists";
 
     private static final Map<String, String> CONSTRAINS_MAP = Map.of(
             "users_unique_email_idx", EXCEPTION_DUPLICATE_EMAIL,

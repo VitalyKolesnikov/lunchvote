@@ -35,13 +35,18 @@ public class AdminVoteRestController {
     }
 
     @GetMapping("result")
-    public List<VotingResultTo> getResult(@RequestParam LocalDate date) {
-        log.info("get vote result ");
+    public List<VotingResultTo> getResultByDate(@RequestParam LocalDate date) {
+        log.info("get vote result of {}", date);
         return voteRepository.getVoteResult(date)
                 .stream()
                 .sorted(Comparator
                         .comparingLong(VotingResultTo::getVoteCount)
                         .reversed())
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("result/today")
+    public List<VotingResultTo> getTodaysResult() {
+        return getResultByDate(LocalDate.now());
     }
 }

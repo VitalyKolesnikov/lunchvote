@@ -14,7 +14,7 @@ import javax.validation.constraints.PositiveOrZero;
 @Table(name = "dishes")
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "menu")
 @NoArgsConstructor
 public class Dish extends AbstractNamedEntity {
 

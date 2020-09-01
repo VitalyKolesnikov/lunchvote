@@ -56,7 +56,7 @@ public class AdminMenuRestController {
         int restaurantId = menuTo.getRestaurantId();
         Restaurant restaurant = restaurantRepository.findById(restaurantId).orElseThrow();
 
-        Menu created = menuRepository.save(new Menu(menuTo.getId(), menuTo.getDate(), restaurant));
+        Menu created = menuRepository.save(new Menu(menuTo.getId(), restaurant, menuTo.getDate()));
         log.info("Create new menu {}", created);
 
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -82,7 +82,7 @@ public class AdminMenuRestController {
             restaurant = restaurantRepository.findById(newRestaurantId).orElseThrow();
         }
 
-        Menu newMenu = new Menu(menuTo.getId(), menuTo.getDate(), restaurant);
+        Menu newMenu = new Menu(menuTo.getId(), restaurant, menuTo.getDate());
         menuRepository.save(newMenu);
     }
 
