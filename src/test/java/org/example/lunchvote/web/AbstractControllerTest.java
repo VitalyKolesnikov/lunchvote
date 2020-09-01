@@ -24,7 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         "classpath:spring/spring-db.xml"
 })
 @Transactional
-@ActiveProfiles({"postgres", "datajpa"})
 abstract public class AbstractControllerTest {
 
     private static final CharacterEncodingFilter CHARACTER_ENCODING_FILTER = new CharacterEncodingFilter();

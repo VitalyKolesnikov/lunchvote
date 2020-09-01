@@ -3,6 +3,7 @@ package org.example.lunchvote.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.example.lunchvote.HasIdAndEmail;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
@@ -18,7 +19,7 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "users_unique_email_idx")})
-public class User extends AbstractNamedEntity {
+public class User extends AbstractNamedEntity implements HasIdAndEmail {
 
     @Column(name = "email", nullable = false, unique = true)
     @Email

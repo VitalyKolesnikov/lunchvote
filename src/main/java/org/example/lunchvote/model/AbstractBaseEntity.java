@@ -2,6 +2,8 @@ package org.example.lunchvote.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import lombok.Getter;
+import lombok.Setter;
 import org.example.lunchvote.HasId;
 import org.hibernate.Hibernate;
 import org.springframework.util.Assert;
@@ -10,6 +12,8 @@ import javax.persistence.*;
 
 @MappedSuperclass
 @Access(AccessType.FIELD)
+@Getter
+@Setter
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public abstract class AbstractBaseEntity implements HasId {
     public static final int START_SEQ = 100000;
@@ -30,16 +34,6 @@ public abstract class AbstractBaseEntity implements HasId {
     public int id() {
         Assert.notNull(id, "Entity must have id");
         return id;
-    }
-
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public boolean isNew() {

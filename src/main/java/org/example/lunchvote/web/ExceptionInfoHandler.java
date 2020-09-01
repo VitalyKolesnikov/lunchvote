@@ -48,7 +48,7 @@ public class ExceptionInfoHandler {
         return logAndGetErrorInfo(req, e, false, DATA_NOT_FOUND);
     }
 
-    @ResponseStatus(value = HttpStatus.I_AM_A_TEAPOT)  // 418
+    @ResponseStatus(value = HttpStatus.CONFLICT)  // 409
     @ExceptionHandler(VotingException.class)
     public ErrorInfo votingError(HttpServletRequest req, RuntimeException e) {
         return logAndGetErrorInfo(req, e, false, VOTING_ERROR);

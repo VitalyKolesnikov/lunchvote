@@ -50,7 +50,7 @@ class UserVoteRestControllerTest extends AbstractControllerTest {
                 .with(userHttpBasic(USER1)));
         if (LocalTime.now().isAfter(VOTING_DEADLINE)) {
             resultActions
-                    .andExpect(status().isIAmATeapot());
+                    .andExpect(status().isConflict());
         } else {
             resultActions.andExpect(status().isOk());
         }

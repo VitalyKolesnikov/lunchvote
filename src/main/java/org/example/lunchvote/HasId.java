@@ -13,7 +13,7 @@ public interface HasId {
 
     // doesn't work for hibernate lazy proxy
     default int id() {
-        Assert.notNull(getId(), "Entity must has id");
+        Assert.notNull(getId(), "Entity must have id");
         return getId();
     }
 }
