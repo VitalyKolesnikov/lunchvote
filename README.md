@@ -27,6 +27,8 @@ P.P.S.: Assume that your API will be used by a frontend developer to build front
 
 >__There is a WAR-file in root folder to deploy in Tomcat.__
 
+>__There is also a postman.json which includes test commands and could be imported into Postman.__
+
 ## REST API
 
 >__All requests require basic authorization.__
