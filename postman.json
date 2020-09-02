@@ -1,0 +1,1231 @@
+{
+	"info": {
+		"_postman_id": "829c7b07-9127-422d-ba4a-ef396d591b9f",
+		"name": "lunchvote",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "get all users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/users/by?email=user1@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"users",
+								"by"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "user1@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/users/100002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"users",
+								"100002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new user",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"name\": \"User7\",\n        \"email\": \"user7@gmail.com\",\n        \"password\": \"pass7\",\n        \"roles\": [\n            \"USER\"\n        ]\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"name\": \"User33\",\n        \"email\": \"user33@gmail.com\",\n        \"password\": \"pass33\",\n        \"roles\": [\n            \"USER\"\n        ]\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/users/100002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"users",
+								"100002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/users/100001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"users",
+								"100001"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "menus",
+			"item": [
+				{
+					"name": "get menu by ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/menus/100010",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"menus",
+								"100010"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete menu",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/menus/100011",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"menus",
+								"100011"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get menus by date",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/menus/filter?date=2020-08-28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"menus",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2020-08-28"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new menu",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"restaurantId\":100007,\n    \"date\":\"2020-08-29\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/menus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"menus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update menu",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"restaurantId\":100007,\n    \"date\":\"2020-08-30\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/menus/100010",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"menus",
+								"100010"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get todays menus",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/menus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"menus"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "dishes",
+			"item": [
+				{
+					"name": "get dish by ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/dishes/100016",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"dishes",
+								"100016"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete dish",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/dishes/100018",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"dishes",
+								"100018"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new dish",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Shrimp roll\",\n    \"price\": 300,\n    \"menuId\": 100010\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/dishes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"dishes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update dish",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Coca-cola light\",\n    \"price\": 95,\n    \"menuId\": 100010\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/dishes/100015",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"dishes",
+								"100015"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "restaurants",
+			"item": [
+				{
+					"name": "get restaurant by ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/restaurants/100007",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"restaurants",
+								"100007"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get restaurant by name",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/restaurants/by?name=KFC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"restaurants",
+								"by"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "KFC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all restaurants",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/restaurants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new restaurant",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Black Star Burger\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/restaurants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update restaurant",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Kentucky Fried Chicken\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/restaurants/100007",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"restaurants",
+								"100007"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete restaurant",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/restaurants/100007",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"restaurants",
+								"100007"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "votes",
+			"item": [
+				{
+					"name": "vote for restaurant",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/votes?restaurantId=100009",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"votes"
+							],
+							"query": [
+								{
+									"key": "restaurantId",
+									"value": "100009"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get votes by date",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/votes/filter?date=2020-08-28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"votes",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2020-08-28"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get votes of user",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/votes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"votes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get voting result by date",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/votes/result?date=2020-08-31",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"votes",
+								"result"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2020-08-31"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get todays voting result",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "pass_admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lunchvote/rest/admin/votes/result/today",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lunchvote",
+								"rest",
+								"admin",
+								"votes",
+								"result",
+								"today"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "38232a24-aca4-4e59-977e-f886a84c827c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d278fc6d-4e00-487f-b7ed-bc8b3308018c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
