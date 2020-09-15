@@ -1,7 +1,6 @@
 package org.example.lunchvote.web.menu;
 
 import org.example.lunchvote.model.Menu;
-import org.example.lunchvote.testdata.MenuTestData;
 import org.example.lunchvote.to.MenuTo;
 import org.example.lunchvote.util.exception.NotFoundException;
 import org.example.lunchvote.web.AbstractControllerTest;
@@ -17,7 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.example.lunchvote.TestUtil.readFromJson;
 import static org.example.lunchvote.TestUtil.userHttpBasic;
 import static org.example.lunchvote.testdata.MenuTestData.*;
-import static org.example.lunchvote.testdata.RestaurantTestData.*;
+import static org.example.lunchvote.testdata.RestaurantTestData.KFC;
+import static org.example.lunchvote.testdata.RestaurantTestData.KFC_ID;
+import static org.example.lunchvote.testdata.RestaurantTestData.BK;
 import static org.example.lunchvote.testdata.UserTestData.ADMIN;
 import static org.example.lunchvote.util.exception.ErrorType.VALIDATION_ERROR;
 import static org.example.lunchvote.web.ExceptionInfoHandler.EXCEPTION_DUPLICATE_MENU_RESTAURANT;
@@ -76,7 +77,7 @@ class AdminMenuRestControllerTest extends AbstractControllerTest {
 
     @Test
     void createWithLocation() throws Exception {
-        Menu aNew = MenuTestData.getNew();
+        Menu aNew = getNew();
         ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(new MenuTo(aNew)))
@@ -91,7 +92,7 @@ class AdminMenuRestControllerTest extends AbstractControllerTest {
 
     @Test
     void update() throws Exception {
-        Menu updated = MenuTestData.getUpdated();
+        Menu updated = getUpdated();
         perform(MockMvcRequestBuilders.put(REST_URL + MENU1_ID).contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(new MenuTo(updated)))
                 .with(userHttpBasic(ADMIN)))
