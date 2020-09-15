@@ -1,6 +1,7 @@
 package org.example.lunchvote.repository;
 
 import org.example.lunchvote.model.Menu;
+import org.example.lunchvote.model.Restaurant;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,6 +19,9 @@ public interface MenuRepository extends JpaRepository<Menu, Integer> {
 
     @Query("SELECT DISTINCT m FROM Menu m JOIN FETCH m.restaurant LEFT JOIN FETCH m.dishes WHERE m.date=:date")
     List<Menu> findByDate(@Param("date") LocalDate date);
+
+    @Query("SELECT DISTINCT m FROM Menu m JOIN FETCH m.restaurant LEFT JOIN FETCH m.dishes WHERE m.restaurant=:restaurant")
+    List<Menu> findByRestaurant(@Param("restaurant") Restaurant restaurant);
 
     @Transactional
     @Modifying

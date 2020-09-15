@@ -24,6 +24,7 @@ public class MenuTestData {
     public static final Menu MENU3 = new Menu(MENU3_ID, MCD, TODAY);
 
     public static List<Menu> MENUS = List.of(MENU1, MENU2, MENU3);
+    public static List<Menu> KFC_MENUS = List.of(MENU1);
 
     public static Menu getNew() {
         return new Menu(null, KFC, TODAY.plusDays(1));

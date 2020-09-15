@@ -49,6 +49,13 @@ public class AdminMenuRestController {
         return menuRepository.findByDate(date);
     }
 
+    @GetMapping("/restaurant/{id}")
+    public List<Menu> getByRestaurantId(@PathVariable @NotNull int id) {
+        log.info("Get menus by restaurant id {}", id);
+        Restaurant restaurant = restaurantRepository.findById(id).orElseThrow();
+        return menuRepository.findByRestaurant(restaurant);
+    }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @Transactional
     public ResponseEntity<Menu> createWithLocation(@Valid @RequestBody MenuTo menuTo) {

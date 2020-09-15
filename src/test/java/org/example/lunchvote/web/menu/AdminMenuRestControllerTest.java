@@ -1,6 +1,7 @@
 package org.example.lunchvote.web.menu;
 
 import org.example.lunchvote.model.Menu;
+import org.example.lunchvote.testdata.MenuTestData;
 import org.example.lunchvote.to.MenuTo;
 import org.example.lunchvote.util.exception.NotFoundException;
 import org.example.lunchvote.web.AbstractControllerTest;
@@ -16,8 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.example.lunchvote.TestUtil.readFromJson;
 import static org.example.lunchvote.TestUtil.userHttpBasic;
 import static org.example.lunchvote.testdata.MenuTestData.*;
-import static org.example.lunchvote.testdata.RestaurantTestData.BK;
-import static org.example.lunchvote.testdata.RestaurantTestData.KFC;
+import static org.example.lunchvote.testdata.RestaurantTestData.*;
 import static org.example.lunchvote.testdata.UserTestData.ADMIN;
 import static org.example.lunchvote.util.exception.ErrorType.VALIDATION_ERROR;
 import static org.example.lunchvote.web.ExceptionInfoHandler.EXCEPTION_DUPLICATE_MENU_RESTAURANT;
@@ -52,6 +52,15 @@ class AdminMenuRestControllerTest extends AbstractControllerTest {
     }
 
     @Test
+    void getByRestaurantId() throws Exception {
+        perform(MockMvcRequestBuilders.get(REST_URL + "restaurant/" + KFC_ID)
+                .with(userHttpBasic(ADMIN)))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(MENU_MATCHER.contentJson(KFC_MENUS));
+    }
+
+    @Test
     void getUnauth() throws Exception {
         perform(MockMvcRequestBuilders.get(REST_URL + MENU1_ID))
                 .andExpect(status().isUnauthorized());
@@ -67,7 +76,7 @@ class AdminMenuRestControllerTest extends AbstractControllerTest {
 
     @Test
     void createWithLocation() throws Exception {
-        Menu aNew = getNew();
+        Menu aNew = MenuTestData.getNew();
         ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(new MenuTo(aNew)))
@@ -82,7 +91,7 @@ class AdminMenuRestControllerTest extends AbstractControllerTest {
 
     @Test
     void update() throws Exception {
-        Menu updated = getUpdated();
+        Menu updated = MenuTestData.getUpdated();
         perform(MockMvcRequestBuilders.put(REST_URL + MENU1_ID).contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(new MenuTo(updated)))
                 .with(userHttpBasic(ADMIN)))

@@ -92,6 +92,10 @@ P.P.S.: Assume that your API will be used by a frontend developer to build front
 #### Get all by date
 
     curl -s http://localhost:8080/lunchvote/rest/admin/menus/filter?date=2020-08-28 -u admin@gmail.com:pass_admin
+    
+#### Get all by restaurant ID
+
+    curl -s http://localhost:8080/lunchvote/rest/admin/menus/restaurant/100007 -u admin@gmail.com:pass_admin
 
 #### Create
 
