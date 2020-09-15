@@ -167,4 +167,4 @@ P.P.S.: Assume that your API will be used by a frontend developer to build front
 
 #### Vote for restaurant
 
-    curl -s -X POST http://localhost:8080/lunchvote/rest/votes?restaurantId=100009 -u user2@gmail.com:pass2
+    curl -s -X PUT http://localhost:8080/lunchvote/rest/votes?restaurantId=100009 -u user2@gmail.com:pass2
