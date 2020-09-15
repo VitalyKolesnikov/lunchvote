@@ -25,9 +25,7 @@ P.S.: Make sure everything works with the latest version that is on github :)
 
 P.P.S.: Assume that your API will be used by a frontend developer to build frontend on top of that.
 
->__There is a WAR-file in root folder to deploy in Tomcat.__
-
->__There is also a postman.json which includes test commands and could be imported into Postman.__
+>__There is a postman.json which includes test commands and could be imported into Postman.__
 
 ## REST API
 

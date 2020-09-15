@@ -2,7 +2,6 @@ package org.example.lunchvote.testdata;
 
 import org.example.lunchvote.TestMatcher;
 import org.example.lunchvote.model.Menu;
-import org.example.lunchvote.model.Restaurant;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -39,14 +39,14 @@ class UserVoteRestControllerTest extends AbstractControllerTest {
 
     @Test
     void vote() throws Exception {
-        perform(MockMvcRequestBuilders.post(REST_URL + "?restaurantId=" + KFC_ID)
+        perform(MockMvcRequestBuilders.put(REST_URL + "?restaurantId=" + KFC_ID)
                 .with(userHttpBasic(USER2)))
                 .andExpect(status().isOk());
     }
 
     @Test
     void revote() throws Exception {
-        ResultActions resultActions = perform(MockMvcRequestBuilders.post(REST_URL + "?restaurantId=" + KFC_ID)
+        ResultActions resultActions = perform(MockMvcRequestBuilders.put(REST_URL + "?restaurantId=" + KFC_ID)
                 .with(userHttpBasic(USER1)));
         if (LocalTime.now().isAfter(VOTING_DEADLINE)) {
             resultActions
