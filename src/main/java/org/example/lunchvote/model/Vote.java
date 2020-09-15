@@ -9,7 +9,6 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "votes")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,7 +24,7 @@ public class Vote extends AbstractBaseEntity {
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "vote_date", nullable = false)
     @NotNull
     private LocalDate date;
 

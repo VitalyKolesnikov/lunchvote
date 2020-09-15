@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "restaurants")
 @NoArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.None.class)
 public class Restaurant extends AbstractNamedEntity{

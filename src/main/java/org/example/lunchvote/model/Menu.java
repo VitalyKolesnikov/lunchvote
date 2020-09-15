@@ -11,7 +11,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "menus")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,7 +22,7 @@ public class Menu extends AbstractBaseEntity {
     @NotNull
     private Restaurant restaurant;
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "menu_date", nullable = false)
     @NotNull
     private LocalDate date;
 
